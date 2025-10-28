@@ -1,0 +1,109 @@
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body styling */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 1rem;
+}
+
+/* Main container */
+.mainContainer {
+  width: 100%;
+  max-width: 400px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem 1.5rem;
+}
+
+/* Page title */
+.mainContainer h1 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+/* Question card */
+.questionCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Question text */
+.questionCard .question {
+  font-size: 1.3rem;
+  color: #333;
+  text-align: center;
+}
+
+/* Options container */
+.optionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+/* Option buttons */
+.optionBtn {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.optionBtn:hover {
+  background-color: #f0f0f0;
+  border-color: #888;
+}
+
+/* Feedback container */
+.feedbackContainer {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  min-height: 1.2rem; /* prevents layout shift */
+  color: #007700; /* default correct color */
+}
+
+/* Correct/incorrect feedback colors */
+.feedbackContainer.incorrect {
+  color: #cc0000;
+}
+
+/* Media query for larger screens */
+@media (min-width: 500px) {
+  .mainContainer {
+    padding: 2.5rem 2rem;
+  }
+
+  .mainContainer h1 {
+    font-size: 2rem;
+  }
+
+  .questionCard .question {
+    font-size: 1.5rem;
+  }
+
+  .optionBtn {
+    font-size: 1.1rem;
+    padding: 1rem;
+  }
+}
+
+
+

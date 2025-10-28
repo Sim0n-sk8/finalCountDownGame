@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crickey</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="mainContainer">
+        <h1>THE END IS NEAR</h1>
+      <h1
+        id="countdown"
+        style="font-size: 2rem; text-align: center; margin-top: 2rem"
+      >
+        Loading...
+    </h1>
+
+      <div class="questionCard">
+        <h2 class="question">What spread is Australia known for?</h2>
+
+        <div class="optionsContainer">
+          <button class="optionBtn" id="option1" data-answer="false">
+            Marmite
+          </button>
+          <button class="optionBtn" id="optionCorrect" data-answer="true">
+            Vegemite
+          </button>
+          <button class="optionBtn" id="option2" data-answer="false">
+            Nutella
+          </button>
+          <button class="optionBtn" id="option3" data-answer="false">
+            Peanut Butter
+          </button>
+          <button class="optionBtn" id="option4" data-answer="false">
+            Jam
+          </button>
+        </div>
+
+        <div class="feedbackContainer" id="feedback"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
