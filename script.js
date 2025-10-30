@@ -1,27 +1,39 @@
- window.onload = () => {
-    const countdownEl = document.getElementById("countdown");
-    const targetDate = new Date(2025, 10, 30, 0, 0, 0); // Nov 30, 2025
+const buttons = document.querySelectorAll(".optionBtn");
+const feedback = document.getElementById("feedback");
+const audio = new Audio("assets/audiomass-output.mp3");
+const kangaroo = document.getElementById("kangaroo");
 
-    const timer = setInterval(() => {
-      const now = new Date();
-      const distance = targetDate - now;
+buttons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const isCorrect = btn.dataset.answer === "true";
 
-      if (distance <= 0) {
-        clearInterval(timer);
-        countdownEl.innerText = "⏰ Time's up!";
-        return;
-      }
+    // Reset buttons (overlay remains off unless correct)
+    buttons.forEach((b) => {
+      b.style.backgroundColor = "#fff";
+      b.style.color = "#000";
+      b.style.transition = "all 0.2s ease";
+    });
 
-      const hours = Math.floor(distance / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    if (isCorrect) {
+      btn.style.backgroundColor = "#4caf50";
+      btn.style.color = "#fff";
+      feedback.textContent = "Correct!";
+      feedback.classList.remove("incorrect");
+      feedback.classList.add("correct");
 
-      countdownEl.innerText = `${hours}h ${minutes}m ${seconds}s`;
-    }, 1000);
-  };
+      audio.currentTime = 0;
+      audio.play();
 
-
-
-
-
-  
+      // Show kangaroo overlay
+      setTimeout(() => {
+        kangaroo.classList.add("show");
+      }, 200);
+    } else {
+      btn.style.backgroundColor = "#e74c3c";
+      btn.style.color = "#fff";
+      feedback.textContent = "Try again!";
+      feedback.classList.remove("correct");
+      feedback.classList.add("incorrect");
+    }
+  });
+});

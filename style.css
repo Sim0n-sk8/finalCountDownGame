@@ -1,3 +1,14 @@
+/* Australian Color Palette */
+:root {
+  --aussie-green: #4f997d;
+  --aussie-cream: #FFE797;
+  --aussie-orange: #ffdfa7;
+  --aussie-red: #A72703;
+  --aussie-white: #ffffff;
+  --text-black: #000000;
+  --text-white: #ffffff;
+}
+
 /* Reset some default styles */
 * {
   margin: 0;
@@ -12,7 +23,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f5f5f5;
+  background-color: var(--aussie-green);
   padding: 1rem;
 }
 
@@ -20,10 +31,11 @@ body {
 .mainContainer {
   width: 100%;
   max-width: 400px;
-  background-color: #ffffff;
+  background-color: var(--aussie-white);
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   padding: 2rem 1.5rem;
+  border: 2px solid var(--text-black);
 }
 
 /* Page title */
@@ -31,7 +43,7 @@ body {
   text-align: center;
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
-  color: #222;
+  color: var(--text-black);
 }
 
 /* Question card */
@@ -44,7 +56,7 @@ body {
 /* Question text */
 .questionCard .question {
   font-size: 1.3rem;
-  color: #333;
+  color: var(--text-black);
   text-align: center;
 }
 
@@ -59,16 +71,22 @@ body {
 .optionBtn {
   padding: 0.8rem;
   font-size: 1rem;
-  border: 2px solid #ccc;
+  border: 2px solid var(--text-black);
   border-radius: 8px;
-  background-color: #fff;
+  background-color: var(--aussie-orange);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  color: var(--text-black);
+  font-weight: 500;
 }
 
 .optionBtn:hover {
-  background-color: #f0f0f0;
-  border-color: #888;
+  background-color: var(--aussie-cream);
+  border-color: var(--text-black);
+}
+
+.optionBtn:active {
+  transform: scale(0.97);
 }
 
 /* Feedback container */
@@ -77,12 +95,12 @@ body {
   font-weight: bold;
   font-size: 1rem;
   min-height: 1.2rem; /* prevents layout shift */
-  color: #007700; /* default correct color */
+  color: var(--aussie-green);
 }
 
 /* Correct/incorrect feedback colors */
 .feedbackContainer.incorrect {
-  color: #cc0000;
+  color: var(--aussie-red);
 }
 
 /* Media query for larger screens */
@@ -105,5 +123,45 @@ body {
   }
 }
 
+.kangaroo {
+  width: 300px;
+  display: block;
+  margin: 2rem auto 0 auto;
+  opacity: 0;
+  transform: translateY(200px) scale(0.7) rotate(10deg);
+  transition: all 0.4s cubic-bezier(0.23, 1.25, 0.32, 1.4);
+  filter: blur(4px);
+}
 
+.kangaroo {
+  position: fixed;       /* overlay on top of everything */
+  left: 50%;             /* center horizontally */
+  bottom: -200px;        /* start off-screen at bottom */
+  transform: translateX(-50%) scale(0.7) rotate(10deg);
+  opacity: 0;
+  width: 220px;
+  z-index: 999;          /* make sure it's above everything */
+  transition: all 0.5s cubic-bezier(0.23, 1.25, 0.32, 1.4);
+  pointer-events: none;  /* doesn't block clicks */
+  filter: blur(4px);
+}
 
+.kangaroo.show {
+  bottom: 50px;          /* rises above buttons */
+  opacity: 1;
+  transform: translateX(-50%) scale(1.2) rotate(-5deg);
+  filter: blur(0);
+  animation: bounceChaos 0.8s ease-in-out 0.2s;
+}
+
+@keyframes bounceChaos {
+  0% {
+    transform: translateX(-50%) scale(1.2) rotate(-5deg);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.25) rotate(5deg);
+  }
+  100% {
+    transform: translateX(-50%) scale(1.2) rotate(-3deg);
+  }
+}
