@@ -1,14 +1,16 @@
 const buttons = document.querySelectorAll(".optionBtn");
 const feedback = document.getElementById("feedback");
-const audio = new Audio("assets/audiomass-output.mp3");
+const audio = new Audio("assets/MAW.mp3");
 const kangaroo = document.getElementById("kangaroo");
 const koala = document.getElementById("koala");
+const scoob = document.getElementById("scoob");
+const irwin = document.getElementById("irwin");
 
 buttons.forEach((btn) => {
   btn.addEventListener("click", () => {
     const isCorrect = btn.dataset.answer === "true";
 
-    // Reset all buttons
+    // Reset buttons
     buttons.forEach((b) => {
       b.style.backgroundColor = "#fff";
       b.style.color = "#000";
@@ -17,26 +19,26 @@ buttons.forEach((btn) => {
 
     feedback.classList.remove("correct", "incorrect");
 
-    // Always remove animations before reapplying
+    // Reset animations
     kangaroo.classList.remove("show");
     koala.classList.remove("show");
-    void document.body.offsetWidth; // reflow trick to restart animation
+    irwin.classList.remove("show");
+    void document.body.offsetWidth; // reflow trick to restart animations
 
     if (isCorrect) {
-      // Set correct feedback
+      // Feedback
       btn.style.backgroundColor = "#4caf50";
       btn.style.color = "#fff";
       feedback.textContent = "Correct!";
       feedback.classList.add("correct");
 
-      // play sound
       audio.currentTime = 0;
       audio.play().catch(() => {});
 
-      // Start both animations at once
-      kangaroo.classList.add("show");
-      koala.classList.add("show");
-
+      // Start all animations at once
+      kangaroo.classList.add("show"); // moves way higher
+      koala.classList.add("show");    // chaosKoala
+      irwin.classList.add("show");    // fades in at bottom
     } else {
       // Incorrect feedback
       btn.style.backgroundColor = "#e74c3c";
